@@ -1,0 +1,531 @@
+
+import java.util.ArrayList;
+
+// Classe Hospede
+public class Hospede {
+    private String nome;
+    private String cpf;
+    private String telefone;
+    private String email;
+
+    public Hospede(String nome, String cpf, String telefone, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+    public void atualizarEndereco(String novoEndereco) {
+        System.out.println("Endereço atualizado para: " + novoEndereco);
+    }
+
+    public void visualizarReservas() {
+        System.out.println("Visualizando reservas do hóspede " + nome);
+    }
+
+    public void cancelarReserva(int codigoReserva) {
+        System.out.println("Reserva " + codigoReserva + " cancelada.");
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+// Classe Quarto
+public class Quarto {
+    private int numero;
+    private String tipo;
+    private int capacidade;
+    private double preco;
+
+    public Quarto(int numero, String tipo, int capacidade, double preco) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.capacidade = capacidade;
+        this.preco = preco;
+    }
+
+    public boolean verificarDisponibilidade() {
+        System.out.println("Verificando disponibilidade do quarto " + numero);
+        return true;
+    }
+
+    public double calcularPrecoEstadia(int dias) {
+        return dias * preco;
+    }
+
+    public void atualizarPreco(double novoPreco) {
+        this.preco = novoPreco;
+        System.out.println("Preço do quarto " + numero + " atualizado para: " + preco);
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+}
+
+// Classe Reserva
+public class Reserva {
+    private Hospede hospede;
+    private Quarto quarto;
+    private String dataInicio;
+    private String dataFim;
+    private int codigoReserva;
+
+    public Reserva(Hospede hospede, Quarto quarto, String dataInicio, String dataFim, int codigoReserva) {
+        this.hospede = hospede;
+        this.quarto = quarto;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.codigoReserva = codigoReserva;
+    }
+
+    public void confirmarReserva() {
+        System.out.println("Reserva " + codigoReserva + " confirmada para o hóspede " + hospede.getNome());
+    }
+
+    public void alterarDatas(String novaDataInicio, String novaDataFim) {
+        this.dataInicio = novaDataInicio;
+        this.dataFim = novaDataFim;
+        System.out.println("Datas da reserva " + codigoReserva + " alteradas.");
+    }
+
+    public void gerarComprovante() {
+        System.out.println("Gerando comprovante da reserva " + codigoReserva);
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public String getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(String dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public int getCodigoReserva() {
+        return codigoReserva;
+    }
+
+    public void setCodigoReserva(int codigoReserva) {
+        this.codigoReserva = codigoReserva;
+    }
+}
+
+// Classe CheckIn
+public class CheckIn {
+    private Reserva reserva;
+    private String dataCheckIn;
+    private String observacoes;
+
+    public CheckIn(Reserva reserva, String dataCheckIn, String observacoes) {
+        this.reserva = reserva;
+        this.dataCheckIn = dataCheckIn;
+        this.observacoes = observacoes;
+    }
+
+    public void registrarEntrada() {
+        System.out.println("Check-in realizado para a reserva " + reserva.getCodigoReserva());
+    }
+
+    public void verificarReserva() {
+        System.out.println("Verificando reserva " + reserva.getCodigoReserva());
+    }
+
+    public void informarNumeroQuarto() {
+        System.out.println("Quarto número " + reserva.getQuarto().getNumero());
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    public String getDataCheckIn() {
+        return dataCheckIn;
+    }
+
+    public void setDataCheckIn(String dataCheckIn) {
+        this.dataCheckIn = dataCheckIn;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+}
+
+// Classe CheckOut
+public class CheckOut {
+    private Reserva reserva;
+    private String dataCheckOut;
+    private double valorTotal;
+
+    public CheckOut(Reserva reserva, String dataCheckOut, double valorTotal) {
+        this.reserva = reserva;
+        this.dataCheckOut = dataCheckOut;
+        this.valorTotal = valorTotal;
+    }
+
+    public void registrarSaida() {
+        System.out.println("Check-out realizado para a reserva " + reserva.getCodigoReserva());
+    }
+
+    public void calcularConsumo(double consumo) {
+        this.valorTotal += consumo;
+    }
+
+    public void gerarNotaFiscal() {
+        System.out.println("Nota fiscal gerada no valor de: " + valorTotal);
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    public String getDataCheckOut() {
+        return dataCheckOut;
+    }
+
+    public void setDataCheckOut(String dataCheckOut) {
+        this.dataCheckOut = dataCheckOut;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+}
+
+// Classe Hotel
+public class Hotel {
+    private ArrayList<Hospede> hospedes;
+    private ArrayList<Quarto> quartos;
+    private ArrayList<Reserva> reservas;
+    private ArrayList<CheckIn> checkins;
+    private ArrayList<CheckOut> checkouts;
+
+    public Hotel() {
+        this.hospedes = new ArrayList<>();
+        this.quartos = new ArrayList<>();
+        this.reservas = new ArrayList<>();
+        this.checkins = new ArrayList<>();
+        this.checkouts = new ArrayList<>();
+    }
+
+    public void adicionarHospede(Hospede hospede) {
+        hospedes.add(hospede);
+    }
+
+    public void adicionarQuarto(Quarto quarto) {
+        quartos.add(quarto);
+    }
+
+    public void realizarReserva(Reserva reserva) {
+        reservas.add(reserva);
+    }
+
+    // Getters e Setters (Encapsulamento)
+    public ArrayList<Hospede> getHospedes() {
+        return hospedes;
+    }
+
+    public ArrayList<Quarto> getQuartos() {
+        return quartos;
+    }
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public ArrayList<CheckIn> getCheckins() {
+        return checkins;
+    }
+
+    public ArrayList<CheckOut> getCheckouts() {
+        return checkouts;
+    }
+}
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// As classes Hospede, Quarto, Reserva, CheckIn, CheckOut e Hotel permanecem as mesmas.
+
+public class Main {
+    public static void main(String[] args) {
+        // Inicializando o hotel
+        Hotel hotel = new Hotel();
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        // Menu interativo com switch-case
+        do {
+            System.out.println("\n--- Menu do Hotel ---");
+            System.out.println("1. Adicionar Hóspede");
+            System.out.println("2. Adicionar Quarto");
+            System.out.println("3. Realizar Reserva");
+            System.out.println("4. Check-in");
+            System.out.println("5. Check-out");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha deixada pelo nextInt()
+
+            switch (opcao) {
+                case 1:
+                    adicionarHospede(hotel, scanner);
+                    break;
+                case 2:
+                    adicionarQuarto(hotel, scanner);
+                    break;
+                case 3:
+                    realizarReserva(hotel, scanner);
+                    break;
+                case 4:
+                    realizarCheckIn(hotel, scanner);
+                    break;
+                case 5:
+                    realizarCheckOut(hotel, scanner);
+                    break;
+                case 0:
+                    System.out.println("Saindo do sistema...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    public static void adicionarHospede(Hotel hotel, Scanner scanner) {
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("CPF: ");
+        String cpf = scanner.nextLine();
+        System.out.print("Telefone: ");
+        String telefone = scanner.nextLine();
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+
+        Hospede hospede = new Hospede(nome, cpf, telefone, email);
+        hotel.adicionarHospede(hospede);
+        System.out.println("Hóspede " + nome + " adicionado com sucesso.");
+    }
+
+    public static void adicionarQuarto(Hotel hotel, Scanner scanner) {
+        System.out.print("Número do quarto: ");
+        int numero = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+        System.out.print("Tipo do quarto: ");
+        String tipo = scanner.nextLine();
+        System.out.print("Capacidade do quarto: ");
+        int capacidade = scanner.nextInt();
+        System.out.print("Preço por noite: ");
+        double preco = scanner.nextDouble();
+
+        Quarto quarto = new Quarto(numero, tipo, capacidade, preco);
+        hotel.adicionarQuarto(quarto);
+        System.out.println("Quarto número " + numero + " adicionado com sucesso.");
+    }
+
+    public static void realizarReserva(Hotel hotel, Scanner scanner) {
+        System.out.print("Digite o CPF do hóspede: ");
+        String cpf = scanner.nextLine();
+        Hospede hospede = null;
+
+        for (Hospede h : hotel.getHospedes()) {
+            if (h.getCpf().equals(cpf)) {
+                hospede = h;
+                break;
+            }
+        }
+
+        if (hospede == null) {
+            System.out.println("Hóspede não encontrado.");
+            return;
+        }
+
+        System.out.print("Número do quarto: ");
+        int numeroQuarto = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+        Quarto quarto = null;
+
+        for (Quarto q : hotel.getQuartos()) {
+            if (q.getNumero() == numeroQuarto) {
+                quarto = q;
+                break;
+            }
+        }
+
+        if (quarto == null) {
+            System.out.println("Quarto não encontrado.");
+            return;
+        }
+
+        System.out.print("Data de início (yyyy-mm-dd): ");
+        String dataInicio = scanner.nextLine();
+        System.out.print("Data de fim (yyyy-mm-dd): ");
+        String dataFim = scanner.nextLine();
+        int codigoReserva = (int) (Math.random() * 10000); // Gerar um código aleatório para a reserva
+
+        Reserva reserva = new Reserva(hospede, quarto, dataInicio, dataFim, codigoReserva);
+        hotel.realizarReserva(reserva);
+        System.out.println("Reserva confirmada com código: " + codigoReserva);
+    }
+
+    public static void realizarCheckIn(Hotel hotel, Scanner scanner) {
+        System.out.print("Digite o código da reserva: ");
+        int codigoReserva = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+        Reserva reserva = null;
+
+        for (Reserva r : hotel.getReservas()) {
+            if (r.getCodigoReserva() == codigoReserva) {
+                reserva = r;
+                break;
+            }
+        }
+
+        if (reserva == null) {
+            System.out.println("Reserva não encontrada.");
+            return;
+        }
+
+        System.out.print("Data do Check-in (yyyy-mm-dd): ");
+        String dataCheckIn = scanner.nextLine();
+        System.out.print("Observações: ");
+        String observacoes = scanner.nextLine();
+
+        CheckIn checkIn = new CheckIn(reserva, dataCheckIn, observacoes);
+        hotel.getCheckins().add(checkIn);
+        System.out.println("Check-in realizado com sucesso.");
+    }
+
+    public static void realizarCheckOut(Hotel hotel, Scanner scanner) {
+        System.out.print("Digite o código da reserva: ");
+        int codigoReserva = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+        Reserva reserva = null;
+
+        for (Reserva r : hotel.getReservas()) {
+            if (r.getCodigoReserva() == codigoReserva) {
+                reserva = r;
+                break;
+            }
+        }
+
+        if (reserva == null) {
+            System.out.println("Reserva não encontrada.");
+            return;
+        }
+
+        System.out.print("Data do Check-out (yyyy-mm-dd): ");
+        String dataCheckOut = scanner.nextLine();
+        System.out.print("Valor total da estadia: ");
+        double valorTotal = scanner.nextDouble();
+
+        CheckOut checkOut = new CheckOut(reserva, dataCheckOut, valorTotal);
+        hotel.getCheckouts().add(checkOut);
+        System.out.println("Check-out realizado com sucesso.");
+        System.out.println("Nota fiscal gerada no valor de: " + valorTotal);
+    }
+}
